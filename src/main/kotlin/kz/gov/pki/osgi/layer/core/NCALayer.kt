@@ -1,9 +1,13 @@
 package kz.gov.pki.osgi.layer.core
 
+import org.apache.felix.framework.FrameworkFactory
+import org.osgi.framework.Bundle
+import org.osgi.framework.BundleException
 import org.osgi.framework.Constants
 import java.io.File
 import java.nio.file.Paths
 import java.util.zip.ZipFile
+import java.security.Policy
 import org.osgi.framework.BundleContext
 import org.osgi.service.condpermadmin.ConditionalPermissionAdmin
 import org.slf4j.LoggerFactory
@@ -11,6 +15,7 @@ import kotlin.jvm.JvmStatic
 import java.lang.IllegalArgumentException
 import java.nio.file.Files
 import java.nio.file.StandardOpenOption
+import org.apache.felix.framework.SecurityActivator
 import org.apache.felix.log.Activator
 import org.apache.felix.framework.util.FelixConstants
 import java.security.Security
