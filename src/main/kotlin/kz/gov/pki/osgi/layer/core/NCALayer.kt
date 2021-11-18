@@ -182,15 +182,6 @@ object NCALayer {
 			}
 
 
-			///////////////////////////////////////////////////////////////////////////////////////////////////////
-			//TODO написать функцию, которая заменят парсинг ncalayer.der на парсинг json-конфига
-
-//			val ufexists = UPDATE_FILE.exists()
-			val ncalayerJsonFile = UPDATE_NCLAYER_JSON_FILE.exists()
-
-			val ncalayerJSONForNewVersion = verifyFromJson()
-			///////////////////////////////////////////////////////////////////////////////////////////////////////
-
 			LOG.info("System packages: ${ncalayerJSON.syspkgs}")
 
 			val map = mapOf<String, Any>(
