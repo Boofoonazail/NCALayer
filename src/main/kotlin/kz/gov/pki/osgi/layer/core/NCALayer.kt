@@ -1,13 +1,9 @@
 package kz.gov.pki.osgi.layer.core
 
-import org.apache.felix.framework.FrameworkFactory
-import org.osgi.framework.Bundle
-import org.osgi.framework.BundleException
 import org.osgi.framework.Constants
 import java.io.File
 import java.nio.file.Paths
 import java.util.zip.ZipFile
-import java.security.Policy
 import org.osgi.framework.BundleContext
 import org.osgi.service.condpermadmin.ConditionalPermissionAdmin
 import org.slf4j.LoggerFactory
@@ -15,7 +11,6 @@ import kotlin.jvm.JvmStatic
 import java.lang.IllegalArgumentException
 import java.nio.file.Files
 import java.nio.file.StandardOpenOption
-import org.apache.felix.framework.SecurityActivator
 import org.apache.felix.log.Activator
 import org.apache.felix.framework.util.FelixConstants
 import java.security.Security
@@ -41,7 +36,8 @@ val LOCATION = Paths.get(LOCATION_URI).toFile()
 val USER_HOME = File(System.getProperty("user.home"))
 val CURRENTOS = OSType.from(OSNAME)
 const val UPDATE_FILENAME = "ncalayer.der"
-val CORE_VERSION = NCALayer::class.java.`package`.implementationVersion ?: "1.1"
+const val UPDATE_NCALAYER_JSON = "ncalayer.json"
+val CORE_VERSION = NCALayer::class.java.`package`.implementationVersion ?: "1.2"
 
 enum class OSType(val osname: String) {
 	MACOS("mac"),
@@ -63,6 +59,7 @@ val NCALAYER_HOME = File(when (CURRENTOS) {
 val MAIN_LOG = File(NCALAYER_HOME, "ncalayer.log")
 val UPDATE_FILE = File(NCALAYER_HOME, UPDATE_FILENAME)
 val BUNDLES_DIR = File(NCALAYER_HOME, "bundles")
+val UPDATE_NCLAYER_JSON_FILE = File(NCALAYER_HOME, UPDATE_NCALAYER_JSON) //TODO возможно придется переписать на получение из ресурсов.
 
 object NCALayer {
 
@@ -87,14 +84,13 @@ object NCALayer {
 		return try {
 			if (!LOCATION.isDirectory) {
 				ZipFile(LOCATION).use { zf ->
-					jarBundleList.addAll(zf.entries().toList().
-							filter { it.name.startsWith("kncabundles/") && !it.isDirectory && it.name.endsWith(".jar")}.
-							map { "/${it.name}" })
+					jarBundleList.addAll(zf.entries().toList()
+						.filter { it.name.startsWith("kncabundles/") && !it.isDirectory && it.name.endsWith(".jar") }
+						.map { "/${it.name}" })
 				}
 			} else {
-				jarBundleList.addAll(File(LOCATION, "kncabundles/").walk().
-						filterNot { it.isDirectory && !it.endsWith(".jar") }.
-						map { "/kncabundles/${it.name}" })
+				jarBundleList.addAll(File(LOCATION, "kncabundles/").walk()
+					.filterNot { it.isDirectory && !it.endsWith(".jar") }.map { "/kncabundles/${it.name}" })
 			}
 
 			LOG.info("JAR-Bundles: $jarBundleList")
@@ -106,7 +102,11 @@ object NCALayer {
 				val jarUrl = "jar:" + LOCATION.toURI() + "!" + it
 				val jis = NCALayer::class.java.getResourceAsStream(it)
 				if (unpack) {
-					Files.copy(jis, Paths.get(File(BUNDLES_DIR, it.removePrefix("/kncabundles/")).toURI()), StandardCopyOption.REPLACE_EXISTING)
+					Files.copy(
+						jis,
+						Paths.get(File(BUNDLES_DIR, it.removePrefix("/kncabundles/")).toURI()),
+						StandardCopyOption.REPLACE_EXISTING
+					)
 					LOG.info("$jarUrl unpacked.")
 				} else {
 					ctx.installBundle(jarUrl, jis)
@@ -127,14 +127,19 @@ object NCALayer {
 		val permInfos = permUpdate.conditionalPermissionInfos
 		permInfos.clear()
 		val conditionInfoArgs = bjList.map { "${it.symname}|${it.csernum}|${it.chash}" }
-		permInfos.add(permAdmin.newConditionalPermissionInfo("Signed bundles",
+		permInfos.add(
+			permAdmin.newConditionalPermissionInfo(
+				"Signed bundles",
 				arrayOf(ConditionInfo(CertCondition::class.java.name, conditionInfoArgs.toTypedArray())),
 				arrayOf(PermissionInfo(AllPermission::class.java.name, "*", "*")),
-				ConditionalPermissionInfo.ALLOW))
+				ConditionalPermissionInfo.ALLOW
+			)
+		)
 		permUpdate.commit()
 	}
 
-	@JvmStatic fun main(args: Array<String>) {
+	@JvmStatic
+	fun main(args: Array<String>) {
 
 		LOG.info("NCALayer $CORE_VERSION")
 		val provider = KalkanProvider()
@@ -159,31 +164,10 @@ object NCALayer {
 			}
 			val coreVer = Version.parseVersion(CORE_VERSION)
 
-			val ufexists = UPDATE_FILE.exists()
 
-			val ncalayerJSON = if (ufexists) {
-				val signedJSONData = UPDATE_FILE.readBytes()
-				val existJSON = retrieveJSON(signedJSONData)
-				if (coreVer.compareTo(Version.parseVersion(existJSON.version)) > 0) {
-					retrieveJSON(extractJSON())
-				} else existJSON
-			} else {
-				retrieveJSON(extractJSON())
-			}
+			//TODO написать функцию, которая заменят парсинг ncalayer.der на парсинг json-конфига
 
-			LOG.info("System packages: ${ncalayerJSON.syspkgs}")
-
-			val map = mapOf<String, Any>(
-					//					Constants.FRAMEWORK_STORAGE_CLEAN to Constants.FRAMEWORK_STORAGE_CLEAN_ONFIRSTINIT,
-					Constants.FRAMEWORK_STORAGE to "$NCALAYER_HOME/ncalayer-cache",
-					CORE_BUNDLESDIR_PROP to BUNDLES_DIR.path,
-					CORE_VERSION_PROP to CORE_VERSION,
-					CORE_OSNAME_PROP to OSNAME,
-					CORE_LOCATION_PROP to LOCATION.path,
-					Constants.FRAMEWORK_SECURITY to "osgi",
-					FelixConstants.LOG_LOGGER_PROP to FelixLogger(),
-					FelixConstants.LOG_LEVEL_PROP to System.getProperty("ncalayer.loglevel", "3"),
-					Constants.FRAMEWORK_SYSTEMPACKAGES_EXTRA to ncalayerJSON.syspkgs)
+//			val ufexists = UPDATE_FILE.exists()
 
 			System.setProperty("java.security.policy", policyFile)
 			Policy.getPolicy().refresh()
@@ -194,11 +178,9 @@ object NCALayer {
 			SecurityActivator().start(ctx)
 			Activator().start(ctx)
 
-			updatePermissions(ctx, ncalayerJSON.bundles)
+			val ncalayerJsonFile = UPDATE_NCLAYER_JSON_FILE.exists()
 
-			val jsonVer = Version.parseVersion(ncalayerJSON.version)
-			val vercomp = coreVer.compareTo(jsonVer)
-			val unpack = vercomp < 0 || !ufexists
+			val ncalayerJSON = verifyFromJson(UPDATE_NCLAYER_JSON_FILE.readBytes())
 
 			if (ctx.bundles.size == 1 || unpack) {
 				if (!initFromScratch(ctx, unpack)) {
