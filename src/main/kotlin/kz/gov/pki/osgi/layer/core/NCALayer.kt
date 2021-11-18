@@ -169,10 +169,41 @@ object NCALayer {
 			}
 			val coreVer = Version.parseVersion(CORE_VERSION)
 
+			val ufexists = UPDATE_FILE.exists()
 
+			val ncalayerJSON = if (ufexists) {
+				val signedJSONData = UPDATE_FILE.readBytes()
+				val existJSON = retrieveJSON(signedJSONData)
+				if (coreVer.compareTo(Version.parseVersion(existJSON.version)) > 0) {
+					retrieveJSON(extractJSON())
+				} else existJSON
+			} else {
+				retrieveJSON(extractJSON())
+			}
+
+
+			///////////////////////////////////////////////////////////////////////////////////////////////////////
 			//TODO написать функцию, которая заменят парсинг ncalayer.der на парсинг json-конфига
 
 //			val ufexists = UPDATE_FILE.exists()
+			val ncalayerJsonFile = UPDATE_NCLAYER_JSON_FILE.exists()
+
+			val ncalayerJSONForNewVersion = verifyFromJson(UPDATE_NCLAYER_JSON_FILE.readBytes())
+			///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+			LOG.info("System packages: ${ncalayerJSON.syspkgs}")
+
+			val map = mapOf<String, Any>(
+				//					Constants.FRAMEWORK_STORAGE_CLEAN to Constants.FRAMEWORK_STORAGE_CLEAN_ONFIRSTINIT,
+				Constants.FRAMEWORK_STORAGE to "$NCALAYER_HOME/ncalayer-cache",
+				CORE_BUNDLESDIR_PROP to BUNDLES_DIR.path,
+				CORE_VERSION_PROP to CORE_VERSION,
+				CORE_OSNAME_PROP to OSNAME,
+				CORE_LOCATION_PROP to LOCATION.path,
+				Constants.FRAMEWORK_SECURITY to "osgi",
+				FelixConstants.LOG_LOGGER_PROP to FelixLogger(),
+				FelixConstants.LOG_LEVEL_PROP to System.getProperty("ncalayer.loglevel", "3"),
+				Constants.FRAMEWORK_SYSTEMPACKAGES_EXTRA to ncalayerJSON.syspkgs)
 
 			System.setProperty("java.security.policy", policyFile)
 			Policy.getPolicy().refresh()
@@ -183,9 +214,11 @@ object NCALayer {
 			SecurityActivator().start(ctx)
 			Activator().start(ctx)
 
-			val ncalayerJsonFile = UPDATE_NCLAYER_JSON_FILE.exists()
+			updatePermissions(ctx, ncalayerJSON.bundles)
 
-			val ncalayerJSON = verifyFromJson(UPDATE_NCLAYER_JSON_FILE.readBytes())
+			val jsonVer = Version.parseVersion(ncalayerJSON.version)
+			val vercomp = coreVer.compareTo(jsonVer)
+			val unpack = vercomp < 0 || !ufexists
 
 			if (ctx.bundles.size == 1 || unpack) {
 				if (!initFromScratch(ctx, unpack)) {
