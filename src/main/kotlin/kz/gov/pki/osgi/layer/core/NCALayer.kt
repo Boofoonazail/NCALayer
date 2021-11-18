@@ -21,6 +21,7 @@ import org.apache.felix.framework.util.FelixConstants
 import java.security.Security
 import kz.gov.pki.kalkan.jce.provider.KalkanProvider
 import kz.gov.pki.osgi.layer.api.BundleJSON
+import kz.gov.pki.osgi.layer.api.NCALayerJSON
 import org.osgi.framework.Version
 import uk.org.lidalia.sysoutslf4j.context.SysOutOverSLF4J
 import javax.swing.JOptionPane
@@ -42,7 +43,7 @@ val USER_HOME = File(System.getProperty("user.home"))
 val CURRENTOS = OSType.from(OSNAME)
 const val UPDATE_FILENAME = "ncalayer.der"
 const val UPDATE_NCALAYER_JSON = "ncalayer.json"
-val CORE_VERSION = NCALayer::class.java.`package`.implementationVersion ?: "1.2"
+val CORE_VERSION = NCALayer::class.java.`package`.implementationVersion ?: "1.1"//"1.2"
 
 enum class OSType(val osname: String) {
 	MACOS("mac"),
@@ -171,7 +172,7 @@ object NCALayer {
 
 			val ufexists = UPDATE_FILE.exists()
 
-			val ncalayerJSON = if (ufexists) {
+			/*val ncalayerJSON = if (ufexists) {
 				val signedJSONData = UPDATE_FILE.readBytes()
 				val existJSON = retrieveJSON(signedJSONData)
 				if (coreVer.compareTo(Version.parseVersion(existJSON.version)) > 0) {
@@ -179,16 +180,14 @@ object NCALayer {
 				} else existJSON
 			} else {
 				retrieveJSON(extractJSON())
-			}
+			}*/
 
 
 			///////////////////////////////////////////////////////////////////////////////////////////////////////
 			//TODO написать функцию, которая заменят парсинг ncalayer.der на парсинг json-конфига
+			val ncalayerJSON = NCALayerJSON.parseJSON(UPDATE_NCLAYER_JSON_FILE.readText());//.exists()
 
-//			val ufexists = UPDATE_FILE.exists()
-			val ncalayerJsonFile = UPDATE_NCLAYER_JSON_FILE.exists()
-
-			val ncalayerJSONForNewVersion = verifyFromJson(UPDATE_NCLAYER_JSON_FILE.readBytes())
+			//val ncalayerJSONForNewVersion = verifyFromJson(UPDATE_NCLAYER_JSON_FILE.readBytes())
 			///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			LOG.info("System packages: ${ncalayerJSON.syspkgs}")
@@ -252,12 +251,12 @@ object NCALayer {
 				}
 			}
 
-			LOG.info("Downloading updates info...")
-			Updater.check(ctx, ncalayerJSON)
+			//LOG.info("Downloading updates info...")
+			//Updater.check(ctx, ncalayerJSON)
 
 		} catch(e: Exception) {
 			LOG.error("Failed.", e)
-			JOptionPane.showMessageDialog(null, "Не удалось запустить NCALayer.\n" +
+  			JOptionPane.showMessageDialog(null, "Не удалось запустить NCALayer.\n" +
 					"${e.message}\n" +
 					"Подробности в файле логирования $MAIN_LOG.",
 					"Ошибка запуска", JOptionPane.ERROR_MESSAGE)

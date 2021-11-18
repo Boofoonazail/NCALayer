@@ -1,151 +1,314 @@
 {
-    "bundles": [
-      {
-        "name": "PKI.GOV.KZ JCE Provider",
-        "symname": "kz.gov.pki.kalkan.knca_provider_jce_kalkan",
-        "version": "0.5",
-        "required": true,
-        "info": "Криптопровайдер НУЦ РК. Добавлен eToken 5110",
-        "url": "http://crl.pki.gov.kz/updates/kncabundles/kalkancrypt-0.5.jar",
-        "hash": "584c27d972bcf07d180aa963bc86d035a3ed5d3db0181a65be8300615133ef72",
-        "csernum": "29ddd4f67276111617de6a17d32c7215",
-        "chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
-      },
-      {
-        "name": "PKI.GOV.KZ XML-DSig",
-        "symname": "kz.gov.pki.kalkan.xmldsig",
-        "version": "0.3",
-        "required": true,
-        "info": "Здесь тоже описание, что обновилось. Библиотека XML-DSig",
-        "url": "http://crl.pki.gov.kz/updates/kncabundles/kalkancrypt_xmldsig-osgi-0.3-fresh.jar",
-        "hash": "3f9ebe2e7c747698af0e3d4c9338420054ddc6b6768665f85c2737acd5e3016c",
-        "csernum": "29ddd4f67276111617de6a17d32c7215",
-        "chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
-      },
-      {
-        "name": "Utility classes for KNCA-provider",
-        "symname": "kz.gov.pki.provider.knca_provider_util",
-        "version": "0.7.1",
-        "required": true,
-        "info": "DON'T USE! Unstable! Непубличные прикладные функции для работы с провайдером. Баг с битыми ключами на токенах",
-        "url": "http://crl.pki.gov.kz/updates/kncabundles/knca_provider_util-0.7.1.jar",
-        "hash": "1e2164e653f16bce0be38d897d724c5735459aaa01f564102add2dfe4424261a",
-        "csernum": "29ddd4f67276111617de6a17d32c7215",
-        "chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
-      },
-      {
-        "name": "NCALayerServices",
-        "symname": "kz.gov.pki.api.layer.NCALayerServices",
-        "version": "0.4",
-        "required": true,
-        "info": "Сервисы NCALayer. История использованных P12",
-        "url": "http://crl.pki.gov.kz/updates/kncabundles/NCALayerServices-0.4.jar",
-        "hash": "60160ba8a57e39ccc89872f6a040190ea30bf5eaffade73d72c7a762e4ef7430",
-        "csernum": "29ddd4f67276111617de6a17d32c7215",
-        "chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
-      },
-      {
-        "name": "PKI.GOV.KZ Deprecated Applet",
-        "symname": "kz.gov.pki.knca.applet.knca_applet",
-        "version": "0.3.6",
-        "required": true,
-        "info": "DON'T USE! Deprecated! Дата запроса окна для пароля продлена до 04.2019",
-        "url": "http://crl.pki.gov.kz/updates/kncabundles/knca_applet-0.3.6.jar",
-        "hash": "350f73757b57b7b70cee33c2e7b8ae21ae0df9a82cd4a245ad6d889fe9ee9693",
-        "csernum": "29ddd4f67276111617de6a17d32c7215",
-        "chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
-      },
-      {
-        "name": "WebSocket Layer for KNCA Library",
-        "symname": "kz.gov.pki.osgi.layer.websocket",
-        "version": "0.3.2",
-        "required": true,
-        "info": "Вебсокет сервер. Добавлен сертификат НУЦ 2018 года",
-        "url": "http://crl.pki.gov.kz/updates/kncabundles/NCAWebSocket-0.3.2.jar",
-        "hash": "c496de8c635b3a2c471bc2888424249c221165de8dcd93bc1013c9b635be71ad",
-        "csernum": "29ddd4f67276111617de6a17d32c7215",
-        "chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
-      },
-      {
-        "name": "Common Bundle",
-        "symname": "kz.gov.pki.osgi.layer.common",
-        "version": "0.3.2",
-        "required": true,
-        "info": "Новый модуль с базовым функционалом. Исходники данного модуля общедоступны. Подпись массива XML.",
-        "url": "http://crl.pki.gov.kz/updates/kncabundles/NCALayerCommonBundle-0.3.2.jar",
-        "hash": "5a74ee3427a06608873f0659a04f37fdf05c1bbb882cca169ff784c9eab828c8",
-        "csernum": "29ddd4f67276111617de6a17d32c7215",
-        "chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
-      },
-      {
-        "name": "Модуль ezSigner",
-        "symname": "kz.gov.pki.cms.NLDocSignerModule",
-        "version": "1.0",
-        "info": "Релиз ezSigner",
-        "url": "http://ezsigner.kz/updates/NLDocSignerModule-1.0.jar",
-        "hash": "7cb65aae42c42c77b27085e9782c76562ff565bb20eb67ee07b8df1f8bde6756",
-        "csernum": "00f020e53fa43b0380c5babda153f46eba",
-        "chash": "620242d3288b3f82ec02b69c4edbcde35623fbf7d6316d4e0d76b9204f7b429e"
-      },
-      {
-        "name": "Модуль EFIS.KZ",
-        "symname": "org.skf.osgi.SKFModule",
-        "version": "1.4.0",
-        "info": "SKFModule. Обновление от 07.11.2018",
-        "url": "http://portal.efis.kz/static/?fileName=SkfLayerBundle-1.4.0.jar",
-        "hash": "6e78f06597a6a3bd19a820cf8886b9c2bef6c3c7ceb32df7857a425063f2887f",
-        "csernum": "00a5e09b7dce898927d57e529337c41620",
-        "chash": "00e60fe0f54d34c829b8f4d47469449d6e40813e313ff9e6eff2fa6ade554c53"
-      },
-      {
-        "name": "Модуль Государственные закупки РК",
-        "symname": "kz.ecc.NurSignBundle",
-        "version": "4.1",
-        "info": "Портал госзакупок. Тут будет инфо, что обновилось.",
-        "url": "http://portal.goszakup.gov.kz/portal/uploads/v3/NURSignBundle-4.1.jar",
-        "hash": "2621cc4d8fbe8556f9e7dbc6c67145569282c1254b601b6c59f34561b6e37714",
-        "csernum": "0a8652b922fd2e6c4430066a5cfcab87",
-        "chash": "ceb94579547cb0b5abc2a7ae6761239fa641f338b426665b6c0622d1e592d0c6"
-      },
-      {
-        "name": "KadagalauBundle",
-        "symname": "ru.letograf.crypto.KadagalauBundle",
-        "version": "1.0",
-        "info": "Что обновилось для KadagalauBundle",
-        "url": "http://10.1.50.25/eias/applets/KadagalauBundle.jar",
-        "hash": "66feae6303e862e738440d9d5dd15c71d54323e890a0f3c78b339575b6b5afb8",
-        "csernum": "7db7c83e3a203da6c70bbaab86c99a69",
-        "chash": "a95d383dd39aa3c176f36938ec48464b16feaa4eb23a36b138b32c6877d67a61"
-      },
-      {
-        "name": "Модуль \"е-Минфин\" РК",
-        "symname": "kz.ecc.consSignBundle",
-        "version": "1.0",
-        "info": "Что обновилось для E–Минфин",
-        "url": "http://www.minfin.gov.kz/irj/go/km/docs/documents/%D0%9C%D0%B8%D0%BD%D1%84%D0%B8%D0%BD_new/%D0%94%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C/%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B/%D0%9F%D0%BE%D0%B4%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%A1%D0%B1%D0%BE%D1%80%20%D0%B8%20%D0%BA%D0%BE%D0%BD%D1%81%D0%BE%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F%20%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%B8%20%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82%D0%BD%D0%BE%D0%B9%20%D0%BE%D1%82%D1%87%D0%B5%D1%82%D0%BD%D0%BE%D1%81%D1%82%D0%B8/ru/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D1%8F/ConsSignBundle-1.jar",
-        "hash": "1d579f9fd710311282b424c7fc37a8f45b4d57990b514d1d9b37201676ce6e3b",
-        "csernum": "4eaf0a474fc47fef86f74f4684bad66d",
-        "chash": "d86416eaa68519912d5fa631fab410eba3859142e2c964586474036b577fda83"
-      },
-      {
-        "name": "Модуль ИС \"Казначейство-клиент\"",
-        "symname": "kz.ecc.K2SignBundle",
-        "version": "1.1.1",
-        "info": "Исправление ошибок",
-        "url": "http://client2.kazynashylyk.kz/download/k2SignBundle-1.1.1.jar",
-        "hash": "135efc8359e6f2097f24f8f44bc7f3de7985d783ea33239cfb0da531c33d69d1",
-        "csernum": "0a8652b922fd2e6c4430066a5cfcab87",
-        "chash": "ceb94579547cb0b5abc2a7ae6761239fa641f338b426665b6c0622d1e592d0c6"
-      },
-      {
-        "name": "Модуль QIWI.KZ",
-        "symname": "kz.qiwi.osgi.SecurityUtils",
-        "version": "1.0",
-        "info": "Тут будет инфо об обновлении для Qiwi",
-        "url": "http://arm.osfd.kz/misc/SecurityUtils-0.1.jar",
-        "hash": "ec88793450c52a3b935eff0e5c225516a66be1208b35427f4efaeacf4c2e38a8",
-        "csernum": "00e74cdc056d03f42e47a3778fbad6ca26",
-        "chash": "5bb55dccf72724f91ead62a00022d4543b05d34317571b90bcd2972cb6333e31"
-      }
-    ]
-  }
+	"ncalayer": {
+		"version": "1.2",
+		"info": "Добавление нового сертификата подписи файла обновления.\nПолное описание на сайте pki.gov.kz",
+		"updurl": "http://crl.pki.gov.kz/updates/ncalayer.der",
+		"syspkgs": "javafx.beans.property,javafx.beans.value,javafx.scene.control.cell,javafx.scene.image,javafx.event,javafx.util,kz.gov.pki.osgi.layer.api,org.json,kotlin,kotlin.jvm.internal,kotlin.collections,org.osgi.service.log,org.slf4j,org.slf4j.impl,javax.smartcardio,javafx.application,javafx.collections,javafx.fxml,javafx.geometry,javafx.scene,javafx.scene.control,javafx.scene.input,javafx.scene.layout,javafx.scene.paint,javafx.scene.text,javafx.scene.web,javafx.stage,javafx.util,javax.xml.parsers,org.w3c.dom,org.xml.sax,javax.net.ssl,javax.swing,javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.crypto,sun.security.jca,javax.crypto.spec,javax.servlet,sun.security.smartcardio",
+		"disturls": [
+			{
+				"type": "appzip",
+				"url": "http://crl.pki.gov.kz/updates/ncalayerapp.zip",
+				"hash": "d6c75f8344b36b3da70bea9b95785d82e6bc6fa11439328d36075b2a896fb367"
+			},
+			{
+				"type": "setupexe",
+				"url": "http://crl.pki.gov.kz/updates/ncalayerlite.exe",
+				"hash": "b951d196a49c1d3a5f8c0d0ece1bbeaa8bad35e0846c0e29053414115be13d14"
+			},
+			{
+				"type": "jresetupexe",
+				"url": "",
+				"hash": ""
+			},
+			{
+				"type": "setupsh",
+				"url": "http://crl.pki.gov.kz/updates/ncalayer.sh",
+				"hash": "0772469ebc62314409aa6509e150d98645067e21efc707dcdbd8f5b3ebb95359"
+			},
+			{
+				"type": "jar",
+				"url": "",
+				"hash": ""
+			}
+		],
+		"bundles": [
+			{
+				"name": "PKI.GOV.KZ JCE Provider",
+				"symname": "kz.gov.pki.kalkan.knca_provider_jce_kalkan",
+				"version": "0.5",
+				"required": true,
+				"info": "Криптопровайдер НУЦ РК. Добавлен eToken 5110",
+				"url": "http://crl.pki.gov.kz/updates/kncabundles/kalkancrypt-0.5.jar",
+				"hash": "584c27d972bcf07d180aa963bc86d035a3ed5d3db0181a65be8300615133ef72",
+				"csernum": "29ddd4f67276111617de6a17d32c7215",
+				"chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
+			},
+			{
+				"name": "PKI.GOV.KZ XML-DSig",
+				"symname": "kz.gov.pki.kalkan.xmldsig",
+				"version": "0.3",
+				"required": true,
+				"info": "Здесь тоже описание, что обновилось. Библиотека XML-DSig",
+				"url": "http://crl.pki.gov.kz/updates/kncabundles/kalkancrypt_xmldsig-osgi-0.3-fresh.jar",
+				"hash": "3f9ebe2e7c747698af0e3d4c9338420054ddc6b6768665f85c2737acd5e3016c",
+				"csernum": "29ddd4f67276111617de6a17d32c7215",
+				"chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
+			},
+			{
+				"name": "Utility classes for KNCA-provider",
+				"symname": "kz.gov.pki.provider.knca_provider_util",
+				"version": "0.7.3",
+				"required": true,
+				"info": "DON'T USE! Unstable! Непубличные прикладные функции для работы с провайдером. Добавлен eToken 5110. Workaround для PC/SC contextId",
+				"url": "http://crl.pki.gov.kz/updates/kncabundles/knca_provider_util-0.7.3.jar",
+				"hash": "40326bd3bcb1c1810ea5fe0071b0df0469b2e9db6a088a4e483885250767afcb",
+				"csernum": "29ddd4f67276111617de6a17d32c7215",
+				"chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
+			},
+			{
+				"name": "NCALayerServices",
+				"symname": "kz.gov.pki.api.layer.NCALayerServices",
+				"version": "0.6",
+				"required": true,
+				"info": "Сервисы NCALayer. О программе. Новый API. Автоматическое скачивание модулей",
+				"url": "http://crl.pki.gov.kz/updates/kncabundles/NCALayerServices-0.6.jar",
+				"hash": "0df4f20ca3a35d8633145fa25944021f66d2f890ee5c5b50a4ded02b3fae3863",
+				"csernum": "29ddd4f67276111617de6a17d32c7215",
+				"chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
+			},
+			{
+				"name": "PKI.GOV.KZ Deprecated Applet",
+				"symname": "kz.gov.pki.knca.applet.knca_applet",
+				"version": "0.3.12",
+				"required": true,
+				"info": "DON'T USE! Deprecated! Добавлена поддержка UID в DN",
+				"url": "http://crl.pki.gov.kz/updates/kncabundles/knca_applet-0.3.12.jar",
+				"hash": "3c012720d8f42476700ca02ad9e3b4c05dfe0ca98bdf17a6f9fda0b29c56f0fc",
+				"csernum": "29ddd4f67276111617de6a17d32c7215",
+				"chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
+			},
+			{
+				"name": "WebSocket Layer for KNCA Library",
+				"symname": "kz.gov.pki.osgi.layer.websocket",
+				"version": "0.3.4",
+				"required": true,
+				"info": "Вебсокет сервер. Убраны уведомления в системном лотке Linux",
+				"url": "http://crl.pki.gov.kz/updates/kncabundles/NCAWebSocket-0.3.4.jar",
+				"hash": "2b20e3640ae5b3f42cba061a47d041f8eb737cb8e6c66614dffba2496574b096",
+				"csernum": "29ddd4f67276111617de6a17d32c7215",
+				"chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
+			},
+			{
+				"name": "Common Bundle",
+				"symname": "kz.gov.pki.osgi.layer.common",
+				"version": "0.3.3",
+				"required": true,
+				"info": "Новый модуль с базовым функционалом. Исходники данного модуля общедоступны. Подпись массива XML. + eToken 5110",
+				"url": "http://crl.pki.gov.kz/updates/kncabundles/NCALayerCommonBundle-0.3.3.jar",
+				"hash": "21a595df2fc1a04f37edffc8af232674fac616609f9be620e4d045f016ba2242",
+				"csernum": "29ddd4f67276111617de6a17d32c7215",
+				"chash": "fbe1f4242a312472dd1b40071bf0312833769e11d2fe1aba3da06a9372e1a30e"
+			},
+			{
+				"name": "ezSigner",
+				"symname": "kz.gov.pki.cms.NLDocSignerModule",
+				"version": "1.0",
+				"info": "Релиз ezSigner",
+				"url": "http://ezsigner.kz/updates/NLDocSignerModule-1.0.jar",
+				"hash": "7cb65aae42c42c77b27085e9782c76562ff565bb20eb67ee07b8df1f8bde6756",
+				"csernum": "00f020e53fa43b0380c5babda153f46eba",
+				"chash": "620242d3288b3f82ec02b69c4edbcde35623fbf7d6316d4e0d76b9204f7b429e"
+			},
+			{
+				"name": "Модуль EFIS.KZ",
+				"symname": "org.skf.osgi.SKFModule",
+				"version": "1.6.0",
+				"info": "Обновление от 7.08.2020",
+				"url": "http://portal.efis.kz/static/?fileName=SkfLayerBundle-1.6.0.jar",
+				"hash": "4e773badca820fc9b80f400535120b805eee293ad81cb98bdddac96303b65176",
+				"csernum": "00a5e09b7dce898927d57e529337c41620",
+				"chash": "00e60fe0f54d34c829b8f4d47469449d6e40813e313ff9e6eff2fa6ade554c53"
+			},
+			{
+				"name": "Модуль Государственные закупки РК",
+				"symname": "kz.ecc.NurSignBundle",
+				"version": "4.3.1",
+				"info": "Портал госзакупок. Тут будет инфо, что обновилось. Новый сертификат",
+				"url": "http://portal.goszakup.gov.kz/portal/uploads/v3/NURSignBundle-4.3.1.jar",
+				"hash": "a02444e06dfa98d2d58dc11daaec8a65baa6cd0d1d256f7df0b304e7aef0675b",
+				"csernum": "3e0508a77618ab85d61822b2a5bd3b24",
+				"chash": "b9a7fed12e927618086a463b1eafda67c95c4c97e902abae8e6055ff96a90bf9"
+			},
+			{
+				"name": "Модуль КНП",
+				"symname": "kz.inessoft.kgd.knp.sono_knp_ncalayer_module",
+				"version": "1.1",
+				"info": "Кабинет налогоплательщика от 16.04.2020",
+				"url": "http://cabinet.salyk.kz/knp/ncalayer/sono_knp_ncalayer_module-1.1.0.jar",
+				"hash": "5cc941d9fe5335d6cd91db2d04b610b3a033caeeb9c86e0f4b395005a2d593fe",
+				"csernum": "0d10d2bf1e30140b4bfec3a4",
+				"chash": "60da866e9eb4da3a1c4d0e48ef1ea885bc20d623ac804733fdd3e9c6c6873535"
+			},
+			{
+				"name": "KadagalauBundle",
+				"symname": "ru.letograf.crypto.KadagalauBundle",
+				"version": "1.2",
+				"info": "Обновился сертификат подписи кода",
+				"url": "http://10.1.50.25/eias/applets/KadagalauBundle.jar",
+				"hash": "9c84984c786c972bf385a4902ee52ba510d24cb05d39ddc4c9cb40642f8bc186",
+				"csernum": "04e9ba15b7b7a6f3642d388e3aced7b2",
+				"chash": "4726d89f5a87fc5e5c77b76d81c2fce7f0ab48e8d1a39bb16f9145c19d12b3ca"
+			},
+			{
+				"name": "Модуль \"е-Минфин\" РК",
+				"symname": "kz.ecc.consSignBundle",
+				"version": "1.0",
+				"info": "Что обновилось для E–Минфин",
+				"url": "http://www.minfin.gov.kz/irj/go/km/docs/documents/%D0%9C%D0%B8%D0%BD%D1%84%D0%B8%D0%BD_new/%D0%94%D0%B5%D1%8F%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D1%81%D1%82%D1%8C/%D0%98%D0%BD%D1%84%D0%BE%D1%80%D0%BC%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D1%8B%D0%B5%20%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D1%8B/%D0%9F%D0%BE%D0%B4%D1%81%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0%20%D0%A1%D0%B1%D0%BE%D1%80%20%D0%B8%20%D0%BA%D0%BE%D0%BD%D1%81%D0%BE%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F%20%D1%84%D0%B8%D0%BD%D0%B0%D0%BD%D1%81%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%B8%20%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82%D0%BD%D0%BE%D0%B9%20%D0%BE%D1%82%D1%87%D0%B5%D1%82%D0%BD%D0%BE%D1%81%D1%82%D0%B8/ru/%D0%9C%D0%BE%D0%B4%D1%83%D0%BB%D1%8C%20%D0%B4%D0%BB%D1%8F%20%D0%BF%D0%BE%D0%B4%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D1%8F/ConsSignBundle-1.jar",
+				"hash": "1d579f9fd710311282b424c7fc37a8f45b4d57990b514d1d9b37201676ce6e3b",
+				"csernum": "4eaf0a474fc47fef86f74f4684bad66d",
+				"chash": "d86416eaa68519912d5fa631fab410eba3859142e2c964586474036b577fda83"
+			},
+			{
+				"name": "ИС \"Казначейство-клиент\"",
+				"symname": "kz.ecc.K2SignBundle",
+				"version": "1.1.4",
+				"info": "Новый сертификат",
+				"url": "http://client2.kazynashylyk.kz/download/k2SignBundle-1.1.4.jar",
+				"hash": "375316304d0fdb5a2c05269a1eb5f8ef43e8109c9db00e1be744dd5db0b721a9",
+				"csernum": "3e0508a77618ab85d61822b2a5bd3b24",
+				"chash": "b9a7fed12e927618086a463b1eafda67c95c4c97e902abae8e6055ff96a90bf9"
+			},
+			{
+				"name": "Модуль СФД (QIWI)",
+				"symname": "kz.qiwi.osgi.SecurityUtils",
+				"version": "1.3",
+				"info": "Обновление от 18.09.2019",
+				"url": "https://arm.osfd.kz/misc/SecurityUtils-1.3.jar",
+				"hash": "3bb2e0f48db2fc7ccbd599feea4aff0dcca86311ef1f3c0e078dc90703357bde",
+				"csernum": "00e74cdc056d03f42e47a3778fbad6ca26",
+				"chash": "5bb55dccf72724f91ead62a00022d4543b05d34317571b90bcd2972cb6333e31"
+			},
+			{
+				"name": "Модуль ИСЭЗ (zakup.sk.kz)",
+				"symname": "kz.sapa.eproc.osgi.EprocModule",
+				"version": "1.0",
+				"info": "Новый модуль",
+				"url": "https://zakup.sk.kz/content/download/eproc-module-1.0.jar",
+				"hash": "77acfdb5c774d35670ee203fe2cd5f9df95d0e5a0630b8fe7b627dc6e393083a",
+				"csernum": "00f461d2e86dbf71036af2dcce32668e0f",
+				"chash": "6c5eba8f0d6e4c0075b724f9a3a6b4112f3bb81087e390703455c9e6099ae3d1"
+			},
+			{
+				"name": "Модуль ИС ЭСФ",
+				"symname": "com.osdkz.esf.signer",
+				"version": "1.1",
+				"info": "Проблема с регистрацией ИП?",
+				"url": "http://kgd.gov.kz/sites/default/files/ESF/techInf/esf-signer-1.1.jar",
+				"hash": "c09bb2f88106ed1969cf3b7c3601658bc93268b4f4071de0d2d68ac019945410",
+				"csernum": "00adbf834e8fe1d0f0195acf8938c882bb",
+				"chash": "53afabee6970b109ac2416b1a5125125d9c2d5b314a7eb84b0ac43f85d8e9691"
+			},
+			{
+				"name": "Модуль ЕЮП",
+				"symname": "kz.nitec.eup.eupsigner",
+				"version": "1.0",
+				"info": "Новый модуль",
+				"url": "http://eup.kz/api/PluginManager/EupNcaSignerDownload",
+				"hash": "c7f1af62640528431e7074196ef8b37543bf2d48fa7b9888348712290555142e",
+				"csernum": "00f020e53fa43b0380c5babda153f46eba",
+				"chash": "620242d3288b3f82ec02b69c4edbcde35623fbf7d6316d4e0d76b9204f7b429e"
+			},
+			{
+				"name": "ИС «SmartDocs»",
+				"symname": "kz.smartdoc.osgi.CmsSigner",
+				"version": "1.2",
+				"info": "Обновление от 2020-09-24",
+				"url": "https://doczhso.kz/NCALayerModules/cmssigner-1.2.jar?v=2",
+				"hash": "64a014707059d0c1d5a6e3df8cb70bd0bf5c81655726a23c84d34bf06a2ac8b4",
+				"csernum": "4d4ebd0427d314f84a31e029",
+				"chash": "80698d5be772d1561b56bf874368617f3ba248d660cd13f3a8e53864825765f1"
+			},
+			{
+				"name": "Модуль Uchet.kz",
+				"symname": "kz.uchet.signUtil",
+				"version": "1.3",
+				"info": "THE BOSS MEDIA GROUP",
+				"url": "http://ncalayer.uchet.kz/ncalayer/kz.uchet.signUtil-1.3.jar",
+				"hash": "4e9106327a8571d927c3a297518d07196f18bf47ceff591ce3bd04139a9d0413",
+				"csernum": "0097b5d685a6e7327bd81c553933ad010b",
+				"chash": "7e3cebcc166a63c842af6ed8f814d52daf4654c425f13fa17dbfeb9a41082c50"
+			},
+			{
+				"name": "Everflow Signer",
+				"symname": "asia.dbt.thundercrypt.osgi.ThunderCryptModule",
+				"version": "1.11.3",
+				"info": "Dynamics Business Technologies",
+				"url": "https://dbt.asia/static/download/EverflowSigner.jar",
+				"hash": "e4695e9520a7a82db152111ce13f26cf0c1f8e62946ea29935799385f505daf6",
+				"csernum": "12f2bffc9b1382bb7b24af2b3e95b185",
+				"chash": "31bef1f64de32678f5f300d2d20262a43ec12adaaff067eda0a2e830259da0b5"
+			},
+			{
+				"name": "Модуль Smartcontract",
+				"symname": "kz.webkassa.osgi.SignerBundle",
+				"version": "1.2",
+				"info": "ESEPSHI.KZ",
+				"url": "https://smartcontract.kz/nca/module/smartcontractModule.jar",
+				"hash": "f575913a30c4c363ba9941e95c15b84a1ec5cdb44f573541cb159428391ef5c9",
+				"csernum": "00b5ad21e6828e22fd17563797aec17596",
+				"chash": "f45033c2ad6563c6ea6d23deba9af0224703a3d6372a3996462fd916d147c7ff"
+			},
+			{
+				"name": "ОМАРКЕТ",
+				"symname": "kz.ecc.MarketSignBundle",
+				"version": "1.0.7",
+				"info": "ECC.KZ",
+				"url": "https://omarket.kz/upload/market-signer-1.0.7.jar",
+				"hash": "384e482b39150e3bd8e14d8007bd8bc0b0e535a7f7cc5def5a8aace46fde33dc",
+				"csernum": "4e40d0f4d454f0f2027dfb37ef4b9ee7",
+				"chash": "757bf5308332da7bc1fe19c958f13026452497aa94f7d801ad0312ef5949d92e"
+			},
+			{
+				"name": "Площадка закупок ztender.kz",
+				"symname": "kz.sapa.ztender.osgi.ZTenderModule",
+				"version": "1.0",
+				"info": "ztender.kz",
+				"url": "https://ztender.kz/download/ztender-module-1.0.jar",
+				"hash": "2acdb99335f574806c5839fea7b18bf34e2015cc4f972a3b677c8b3451969cfd",
+				"csernum": "00f461d2e86dbf71036af2dcce32668e0f",
+				"chash": "6c5eba8f0d6e4c0075b724f9a3a6b4112f3bb81087e390703455c9e6099ae3d1"
+			},
+			{
+				"name": "Ak Kamal TinySign",
+				"symname": "kz.akkamal.tinysigner",
+				"version": "2.0.44",
+				"info": "Ak Kamal",
+				"url": "https://www.akkamal.kz/tinysign/dist/tinysign_ncalayer-2.0.44.jar",
+				"hash": "a313220e1ab2c56e8d34e8e667f379650b0dd82f4b3f8147dc3e8daa6ad5309b",
+				"csernum": "4d05b38f13d62d6d726cdf5615d151c5",
+				"chash": "b7cf23c4c67c8c6973c203d378c1421f5102b3b05ce4432e1a612280b47203fc"
+			},
+			{
+				"name": "Qoltanba",
+				"symname": "kz.btsdigital.qoltanba",
+				"version": "1.1",
+				"info": "BTS Digital",
+				"url": "https://github.com/btsdigital/qoltanba/raw/master/qoltanba-1.1.jar",
+				"hash": "0493d241b65b1a0a145961a57d66b2f05963b41ca19030f1e32460d7f422742c",
+				"csernum": "00caad42f52c41b7cbc82089c4c9d12a",
+				"chash": "7bede2c314ee46e9cfa2dff692eb1fc4a4704c92d97f41243e5949f22093ec97"
+			},
+			{
+				"name": "SimBASE",
+				"symname": "kz.Simourg.SimBASE",
+				"version": "1.0",
+				"info": "Simourg",
+				"url": "https://simourg.com/sim/kz/ncalayer/SimbaseNcaLayerBundle-1.0.jar",
+				"hash": "66b486bd47b8b09c95995991aeeccf987d7236ba90556e02629d4a423787c2d8",
+				"csernum": "00e777a4faeeebd0dacef241087e42706f",
+				"chash": "811412efd7cd8faae1a626b56aadc20f84702cbba642e9eeb9264110e155996a"
+			}
+		]
+	}
+}
