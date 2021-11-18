@@ -1,4 +1,36 @@
 {
+  "ncalayer": {
+    "version": "1.2",
+    "info": "Добавление нового сертификата подписи файла обновления.\nПолное описание на сайте pki.gov.kz",
+    "updurl": "http://crl.pki.gov.kz/updates/ncalayer.der",
+    "syspkgs": "javafx.beans.property,javafx.beans.value,javafx.scene.control.cell,javafx.scene.image,javafx.event,javafx.util,kz.gov.pki.osgi.layer.api,org.json,kotlin,kotlin.jvm.internal,kotlin.collections,org.osgi.service.log,org.slf4j,org.slf4j.impl,javax.smartcardio,javafx.application,javafx.collections,javafx.fxml,javafx.geometry,javafx.scene,javafx.scene.control,javafx.scene.layout,javafx.scene.paint,javafx.scene.text,javafx.scene.web,javafx.stage,javafx.util,javax.xml.parsers,org.w3c.dom,org.xml.sax,javax.net.ssl,javax.swing,javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.crypto,sun.security.jca,javax.crypto.spec,javax.servlet,sun.security.smartcardio",
+    "disturls": [
+      {
+        "type": "appzip",
+        "url": "http://ncl.pki.gov.kz/updates/ncalayerapp.zip",
+        "hash": "d6c75f8344b36b3da70bea9b95785d82e6bc6fa11439328d36075b2a896fb367"
+      },
+      {
+        "type": "setupexe",
+        "url": "http://ncl.pki.gov.kz/updates/ncalayerlite.exe",
+        "hash": "b951d196a49c1d3a5f8c0d0ece1bbeaa8bad35e0846c0e29053414115be13d14"
+      },
+      {
+        "type": "jresetupexe",
+        "url": "",
+        "hash": ""
+      },
+      {
+        "type": "setupsh",
+        "url": "http://ncl.pki.gov.kz/updates/ncalayer.sh",
+        "hash": "0772469ebc62314409aa6509e150d98645067e21efc707dcdbd8f5b3ebb95359"
+      },
+      {
+        "type": "jar",
+        "url": "",
+        "hash": ""
+      }
+    ],
     "bundles": [
       {
         "name": "PKI.GOV.KZ JCE Provider",
@@ -149,3 +181,4 @@
       }
     ]
   }
+}

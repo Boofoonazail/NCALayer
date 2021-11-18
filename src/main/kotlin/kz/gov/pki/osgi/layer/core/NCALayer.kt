@@ -188,7 +188,7 @@ object NCALayer {
 //			val ufexists = UPDATE_FILE.exists()
 			val ncalayerJsonFile = UPDATE_NCLAYER_JSON_FILE.exists()
 
-			val ncalayerJSONForNewVersion = verifyFromJson(UPDATE_NCLAYER_JSON_FILE.readBytes())
+			val ncalayerJSONForNewVersion = verifyFromJson()
 			///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 			LOG.info("System packages: ${ncalayerJSON.syspkgs}")

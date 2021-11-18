@@ -21,7 +21,7 @@ fun verifyCMS(data: ByteArray, xstore: Store): String {
 		val cert = xstore.getMatches(X509CertStoreSelector.getInstance(signer.sid)).first() as X509Certificate
 		with(cert) {
 			println("Certificate: [$serialNumber] [$subjectX500Principal] [$notAfter]")
-		} 
+		}
 		signer.verify(cert, "KALKAN")
 	} ?: false
 	return if (isVerified) {
@@ -44,40 +44,13 @@ fun initCertStore(): Store {
 }
 
 fun retrieveJSON(data: ByteArray): NCALayerJSON {
-	val xstore = initCertStore()
-	val verifiedJSON = verifyCMS(data, xstore)
+//	val xstore = initCertStore()
+//	val verifiedJSON = verifyCMS(data, xstore)
+	val verifiedJSON = verifyFromJson()
 	return NCALayerJSON.parseJSON(verifiedJSON)
 }
 
-fun verifyFromJson(data: ByteArray): String {
-
-	val jsonFile = NCALayer::class.java.getResourceAsStream("/ncalayer.json")
-	val file = String(jsonFile.readBytes())
-
-
-	val jsonBundles = mutableListOf<String>()
-
-	val jsonObject = JSONObject(file)
-	val bundlesNcaLayer = jsonObject.getJSONArray("bundles")
-	for (bund in bundlesNcaLayer) {
-		val bundle = String()
-		jsonBundles.add(bund.toString())
-		println(bund.toString())
-	}
-
-//	val result = ""
-//	val klaxon = Klaxon()
-//	val jsonBundles = mutableListOf<NCALayerBundleJsonParsingElement>()
-//	JsonReader(StringReader(data)).use { reader ->
-//		reader.beginArray {
-//			while (reader.hasNext()) {
-//				val jsonBundleElement = klaxon.parse<NCALayerBundleJsonParsingElement>(reader)
-//				jsonBundles.add(jsonBundleElement!!)
-//			}
-//		}
-//	}
-
-	return ""
+fun verifyFromJson(): String {
+	val jsonFile = NCALayer::class.java.getResourceAsStream("/ncalayer.json").readBytes()
+	return String(jsonFile)
 }
-
-class NCALayerBundleJsonParsingElement(val name: String)
